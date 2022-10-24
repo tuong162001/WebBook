@@ -1,0 +1,88 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Apis, { endpoints } from "../../configs/Apis";
+import { loginUser } from "../../store/actionReducer/user";
+import "./styleLogin.css";
+import cookie from "react-cookies";
+
+export default function SignInForm() {
+
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const [isShowPass, setIsShowPass] = useState(true)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleLogin = async (event) => {
+        event.preventDefault()
+        try {
+            let info = await Apis.get(endpoints['oauth2-info'])
+            let res = await Apis.post(endpoints['login'], {
+                "client_id": info.data.client_id,
+                "client_secret": info.data.client_secret,
+                "username": username,
+                "password": password,
+                "grant_type": "password"
+            })
+
+            cookie.save("access_token", res.data.access_token)
+            // console.log('Authorization', `Bearer ${cookie.load('access_token')}`);
+            let user = await Apis.get(endpoints['current-user'], {
+                headers: {
+                    'Authorization': `Bearer ${cookie.load('access_token')}`
+                }
+            })
+
+
+            cookie.save('user', JSON.stringify(user.data))
+            dispatch(loginUser(user.data))
+            navigate("/shopping-card")
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+
+    return (
+        <>
+            <form className="form" onSubmit={handleLogin}>
+                <div className='col-12 form-group input-login'>
+                    <label>UserName</label>
+                    <input className='form-control' placeholder='Enter your username' type='text'
+                        value={username}
+                        onChange={(event) => setUsername(event.target.value)}
+                    />
+                </div>
+                <div className='col-12 form-group input-login'>
+                    <label>PassWord</label>
+
+                    <div className='custom-input-password'>
+                        <input className='form-control' placeholder='Enter your password'
+                            type={isShowPass ? 'text' : 'password'}
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                        />
+                        <span >
+                            <i className={!isShowPass ? "far fa-eye" : "far fa-eye-slash"}></i>
+                        </span>
+
+                    </div>
+                </div>
+                <div className='col-12'>
+                    <button className='btn-login'>Log in</button>
+                </div>
+
+                <div className='col-12'>
+                    <span>Forgot your password?</span>
+                </div>
+                <div className='col-12 text-center  mt-4'>
+                    <span className='login-orther'>Or login with:</span>
+                </div>
+            </form>
+        </>
+    );
+}
