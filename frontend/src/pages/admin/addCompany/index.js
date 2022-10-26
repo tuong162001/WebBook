@@ -42,7 +42,7 @@ export default function AddCompany() {
         style={{ margin: 10 }}
         onClick={() => setIsShowing(!isShowing)}
       >
-        Thêm sách
+        Thêm Công ty
       </button>
       <Modal isOpen={isShowing} ariaHideApp={false}>
         <form onSubmit={handleSubmit}>

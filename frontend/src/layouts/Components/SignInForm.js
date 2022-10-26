@@ -51,18 +51,18 @@ export default function SignInForm() {
         <>
             <form className="form" onSubmit={handleLogin}>
                 <div className='col-12 form-group input-login'>
-                    <label>UserName</label>
-                    <input className='form-control' placeholder='Enter your username' type='text'
+                    <label>Tài khoản</label>
+                    <input className='form-control' placeholder='' type='text'
                         value={username}
                         onChange={(event) => setUsername(event.target.value)}
                     />
                 </div>
                 <div className='col-12 form-group input-login'>
-                    <label>PassWord</label>
+                    <label>Mật khẩu</label>
 
                     <div className='custom-input-password'>
-                        <input className='form-control' placeholder='Enter your password'
-                            type={isShowPass ? 'text' : 'password'}
+                        <input className='form-control' placeholder=''
+                            type="password"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
                         />
@@ -73,14 +73,14 @@ export default function SignInForm() {
                     </div>
                 </div>
                 <div className='col-12'>
-                    <button className='btn-login'>Log in</button>
+                    <button className='btn-login'>Đăng nhập</button>
                 </div>
 
                 <div className='col-12'>
-                    <span>Forgot your password?</span>
+                    <span>Bạn quên mật khẩu?</span>
                 </div>
                 <div className='col-12 text-center  mt-4'>
-                    <span className='login-orther'>Or login with:</span>
+                    <span className='login-orther'>Đăng nhập với:</span>
                 </div>
             </form>
         </>

@@ -63,32 +63,32 @@ export default function SignUpForm() {
         <>
             <form className="form" onSubmit={handleRegister} >
                 <div className='col-12 form-group input-login'>
-                    <label>Firs tName</label>
+                    <label>Họ</label>
                     <input className='form-control' type='text'
                         value={firstName}
                         onChange={(event) => setFirstName(event.target.value)}
                     />
                 </div>
                 <div className='col-12 form-group input-login'>
-                    <label>Last Name</label>
+                    <label>Tên</label>
                     <input className='form-control' type='text'
                         value={LastName}
                         onChange={(event) => setLastName(event.target.value)}
                     />
                 </div>
                 <div className='col-12 form-group input-login'>
-                    <label>User Name</label>
+                    <label>Tên tài khoản</label>
                     <input className='form-control' type='text'
                         value={username}
                         onChange={(event) => setUsername(event.target.value)}
                     />
                 </div>
                 <div className='col-12 form-group input-login'>
-                    <label>Password</label>
+                    <label>Mật khẩu</label>
 
                     <div className='custom-input-password'>
                         <input className='form-control'
-                            type={isShowPass ? 'text' : 'password'}
+                            type="password"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
                         />
@@ -99,11 +99,11 @@ export default function SignUpForm() {
                     </div>
                 </div>
                 <div className='col-12 form-group input-login'>
-                    <label>Confirm Password</label>
+                    <label>Xác nhận Mật khẩu</label>
 
                     <div className='custom-input-password'>
                         <input className='form-control'
-                            type={isShowPass ? 'text' : 'password'}
+                            type="password"
                             value={confirmPassword}
                             onChange={(event) => setConfirmPassword(event.target.value)}
                         />
@@ -130,11 +130,11 @@ export default function SignUpForm() {
                 </div>
 
                 <div className='col-12'>
-                    <button className='btn-login'>Register</button>
+                    <button className='btn-login'>Đăng ký</button>
                 </div>
 
                 <div className='col-12'>
-                    <span>Ban da co tai khoan?</span>
+                    <span>Bạn đã có tài khoản?</span>
                 </div>
 
             </form>

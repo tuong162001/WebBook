@@ -44,7 +44,7 @@ export default function AddAuthor() {
         style={{ margin: 10 }}
         onClick={() => setIsShowing(!isShowing)}
       >
-        Thêm sách
+        Thêm Tác giả
       </button>
       <Modal isOpen={isShowing} ariaHideApp={false}>
         <form onSubmit={handleSubmit}>
