@@ -77,6 +77,12 @@ class CompanyViewSet(viewsets.ViewSet, generics.ListAPIView, generics.CreateAPIV
     parser_classes = [MultiPartParser]
 
 
+class OrderDetailViewSet(viewsets.ViewSet, generics.ListAPIView):
+    queryset = Order_Detail.objects.all()
+    serializer_class = OrderDetailSerializer
+    parser_classes = [MultiPartParser]
+
+
 class OrderViewSet(viewsets.ViewSet, generics.RetrieveAPIView, generics.ListAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
@@ -126,6 +132,10 @@ class OrderViewSet(viewsets.ViewSet, generics.RetrieveAPIView, generics.ListAPIV
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
+
+# class OrderDetailViewSet(viewsets.ViewSet,  generics.ListAPIView):
+#     # queryset = Order_Detail.objects.filter()
+#     serializer_class = OrderDetailSerializer
 
 
 class BookDetailViewSet(viewsets.ViewSet, generics.RetrieveAPIView, generics.UpdateAPIView):

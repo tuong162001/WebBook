@@ -10,7 +10,7 @@ export default function SignInForm() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [isShowPass, setIsShowPass] = useState(true)
+    const [isShowPass, setIsShowPass] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -51,7 +51,7 @@ export default function SignInForm() {
         <>
             <form className="form" onSubmit={handleLogin}>
                 <div className='col-12 form-group input-login'>
-                    <label>Tài khoản</label>
+                    <label>Tên tài khoản</label>
                     <input className='form-control' placeholder='' type='text'
                         value={username}
                         onChange={(event) => setUsername(event.target.value)}
@@ -62,7 +62,7 @@ export default function SignInForm() {
 
                     <div className='custom-input-password'>
                         <input className='form-control' placeholder=''
-                            type="password"
+                            type={isShowPass ? 'text' : 'password'}
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
                         />
@@ -77,7 +77,7 @@ export default function SignInForm() {
                 </div>
 
                 <div className='col-12'>
-                    <span>Bạn quên mật khẩu?</span>
+                    <span>Bạn đã quên mật khẩu?</span>
                 </div>
                 <div className='col-12 text-center  mt-4'>
                     <span className='login-orther'>Đăng nhập với:</span>

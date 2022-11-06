@@ -15,6 +15,7 @@ export default function SignUpForm() {
     const [email, setEmail] = useState('')
     const navigate = useNavigate()
     const [error1, setError1] = useState(false)
+    
 
 
     const handleRegister = (event) => {
@@ -39,7 +40,7 @@ export default function SignUpForm() {
                     }
                 }).catch((err) => {
                     if (err.response) {
-                        alert(Object.keys(err.response.data)[0] + ' error');
+                        alert(Object.keys(err.response.data)[0] + 'Đã có người đăng kí');
                     }
                 })
 
@@ -51,11 +52,15 @@ export default function SignUpForm() {
         }
         if (password !== null && password === confirmPassword) {
             registerUser()
+            // setTimeout(() => {
+            //     // alert("Đăng kí thành công")
+            //     // window.location.reload()
+            //     // navigate("/login")
+
+            // }, 1000);
         } else {
             alert('password error')
         }
-
-
     }
 
 
@@ -92,14 +97,14 @@ export default function SignUpForm() {
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
                         />
-                        <span >
+                        {/* <span >
                             <i className={!isShowPass ? "far fa-eye" : "far fa-eye-slash"}></i>
-                        </span>
+                        </span> */}
 
                     </div>
                 </div>
                 <div className='col-12 form-group input-login'>
-                    <label>Xác nhận Mật khẩu</label>
+                    <label>Xác nhận mật khẩu</label>
 
                     <div className='custom-input-password'>
                         <input className='form-control'
@@ -107,9 +112,9 @@ export default function SignUpForm() {
                             value={confirmPassword}
                             onChange={(event) => setConfirmPassword(event.target.value)}
                         />
-                        <span >
+                        {/* <span >
                             <i className={!isShowPass ? "far fa-eye" : "far fa-eye-slash"}></i>
-                        </span>
+                        </span> */}
 
                     </div>
                 </div>

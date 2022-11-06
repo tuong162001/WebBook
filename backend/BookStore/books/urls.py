@@ -15,6 +15,7 @@ router.register("comments",views.CommentViewSet,'comment')
 router.register("orders",views.OrderViewSet,'order')
 router.register("author",views.AuthorViewSet,'author')
 router.register("company",views.CompanyViewSet,'company')
+router.register("order_detail",views.OrderDetailViewSet,'order_detail')
 
 urlpatterns = [
     path('',include((router.urls))),

@@ -16,6 +16,7 @@ export let endpoints = {
   "comment": (id) => `/books/${id}/comments/`,
   "add-comment": (id) => `/books/${id}/add-comment/`,
   "rating": (id) => `/books/${id}/rating/`,
+  "detail-order": "/order_detail/",
 };
 export default axios.create({
   baseURL: "http://localhost:8000/",

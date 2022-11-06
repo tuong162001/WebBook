@@ -119,7 +119,12 @@ export default function Statistic() {
         loadData()
     }, [])
     console.log(month);
-    console.log(data);
+    console.log(data.length);
+        // for (let i = 0; i < data.length; t++) {
+        //     let temp = 0;
+        //     if()
+        // }
+     
     const format = v => `${v.toLocaleString()}`
     return (
         <>

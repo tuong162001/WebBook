@@ -9,6 +9,7 @@ import Apis, { endpoints } from "../configs/Apis";
 
 import { useNavigate } from "react-router-dom"
 import { shoppingCartActions } from "../store/actionReducer/shopping-cart-action";
+// import dispatch from useDispatch();
 
 const cartItems = [1, 2, 3]
 
@@ -49,6 +50,7 @@ export default function Order() {
     const [selectedWard, setSelectedWard] = useState();
     const navigate = useNavigate();
     const dispatch = useDispatch()
+    const {  user } = useSelector((state) => state.userReducer);
 
     useEffect(() => {
         // fetchInformation();
@@ -93,6 +95,7 @@ export default function Order() {
             }
         ))
     }
+    console.log(user);
     const handleCOD = async (event) => {
         event.preventDefault();
         if (!informations.fullname || !informations.phone || !informations.address) {
@@ -168,6 +171,7 @@ export default function Order() {
                                                 // value={informations.fullname}
                                                 onChange={(event) => onInfomationsChange(event)}
                                                 required
+                                                value={user.first_name + " " + user.last_name}
                                             />
                                         </div>
                                     </div>
